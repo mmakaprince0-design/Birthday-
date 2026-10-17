@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Happy Birthday, Berechi!</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="gate" id="gate">
+  <h2>You’ve got a card</h2>
+  <p>Turn your sound on, then open it.</p>
+  <button id="open">Open the card</button>
+</div>
+
+<main class="stage" id="stage">
+  <div id="bokeh"></div>
+  <h1 class="title fade">HAPPY BIRTHDAY</h1>
+  <svg id="art" viewBox="0 0 736 981" role="img" aria-label="Birthday photo collage">
+    <defs id="defs"></defs>
+    <g id="ring"></g>
+    <g id="main" class="pop">
+      <image id="mainImg" class="cut" href="assets/cutout.webp" x="148" y="409" width="440" height="586" preserveAspectRatio="none"/>
+      <rect id="mainHit" class="hit" tabindex="0" role="button" aria-label="Change main photo" fill="transparent" x="220" y="520" width="300" height="461"/>
+    </g>
+  </svg>
+  <p class="plus1 fade">+1</p>
+  <p class="wish fade">Happy birthday to you, my favourite human. ❤️</p>
+  <p class="name fade">Berechi</p>
+</main>
+<a class="cue" href="#letter">A letter for you <span aria-hidden="true">↓</span></a>
+<section class="letter" id="letter" aria-label="A letter for you">
+  <div class="hearts" id="hearts" aria-hidden="true"></div>
+  <article class="paper">
+    <h2 class="rv">Happy birthday to you, my favourite human. ❤️</h2>
+    <p class="rv">I honestly don’t know where to begin because sometimes words don’t do justice to how much someone means to you.</p>
+    <p class="rv">I’m grateful that our paths crossed and that I got to know you beyond just your name and face. I got to experience your laughter, your hugs, your kisses, your silly moments and all the little things that make you who you are.</p>
+    <p class="rv">I love the way you exist in my world. I love the memories we’ve made, the conversations, the laughter and even the little moments that might seem insignificant but mean so much to me.</p>
+    <p class="rv">You’re someone I have come to care about deeply, and I hope you never doubt that.</p>
+    <p class="rv">I know neither of us is perfect. We have our differences, our misunderstandings and moments when we don’t quite understand each other. But beneath all of that, I hope we never lose sight of the beautiful things that brought us together in the first place.</p>
+    <p class="rv">On your birthday, I wish you happiness that doesn’t run out, opportunities that exceed your expectations, good health, genuine friendships and every beautiful thing your heart desires.</p>
+    <p class="rv">I hope life is gentle with you. I hope you achieve everything you’ve ever dreamed of, and I hope you never stop becoming the wonderful person you’re meant to be.</p>
+    <p class="rv hl">Thank you for being you, Berechi Nazareth Izuchukwu.</p>
+    <p class="rv quote">If I could give you one thing today, it would be the ability to see yourself through my eyes, even for a moment. Perhaps then you’d understand just how special you are to me.</p>
+    <p class="close rv">Happy birthday, my Essence.</p>
+    <p class="sign rv">With so much love,<br>Your girl. ❤️</p>
+  </article>
+</section>
+<input type="file" id="file" accept="image/*" hidden>
+<button id="mute" hidden>Mute</button>
+
+<script src="script.js"></script>
+</body>
+  </html>
+  
