@@ -1,11 +1,22 @@
 /* Birthday card: photo ring, music-reactive animation, letter reveal.
    Photo placement data: src = file, nw/nh = pixel size, fx/fy = where the face sits (0-1), z = how much of the photo width shows. */
+/* EDIT THESE: write each file name exactly as it appears in your GitHub repository.
+   Capital letters, dots and the ending (.jpg, .jpeg, .png, .mp3) all have to match. */
+var FILES={
+  photo1:'IMG-20261013-WA0001.jpg',   /* sofa photo (top panel) */
+  photo2:'IMG-20261013-WA0004.jpg',   /* black sweater (upper left) */
+  photo3:'IMG-20261013-WA0006.jpg',   /* white shirt (upper right) */
+  photo4:'IMG-20261013-WA0003.jpg',   /* couple in the mirror (lower left) */
+  photo5:'IMG-20261013-WA0005.jpg',   /* boat (lower right) */
+  cutout:'1000044346.png',            /* the cutout in the middle */
+  music:'AUD-20261013-WA0007.mp3'
+};
 var PHOTOS={
-  "p0": {"src": "1000042740.jpg", "nw": 810, "nh": 1080, "fx": 0.484, "fy": 0.556, "z": 0.6},
-  "p1": {"src": "1000042746.jpg", "nw": 700, "nh": 933, "fx": 0.62, "fy": 0.33, "z": 0.45},
-  "p2": {"src": "1000042751.jpg", "nw": 700, "nh": 933, "fx": 0.59, "fy": 0.58, "z": 0.5},
-  "p3": {"src": "1000042742.jpg", "nw": 900, "nh": 1200, "fx": 0.42, "fy": 0.51, "z": 0.55},
-  "p4": {"src": "1000042748.jpg", "nw": 774, "nh": 1032, "fx": 0.36, "fy": 0.5, "z": 0.8}
+  "p0": {"src": FILES.photo1, "nw": 810, "nh": 1080, "fx": 0.484, "fy": 0.556, "z": 0.6},
+  "p1": {"src": FILES.photo2, "nw": 700, "nh": 933, "fx": 0.62, "fy": 0.33, "z": 0.45},
+  "p2": {"src": FILES.photo3, "nw": 700, "nh": 933, "fx": 0.59, "fy": 0.58, "z": 0.5},
+  "p3": {"src": FILES.photo4, "nw": 900, "nh": 1200, "fx": 0.42, "fy": 0.51, "z": 0.55},
+  "p4": {"src": FILES.photo5, "nw": 774, "nh": 1032, "fx": 0.36, "fy": 0.5, "z": 0.8}
 };
 
 (function(){
@@ -39,6 +50,7 @@ var PHOTOS={
   });
 
   var mainImg=document.getElementById('mainImg'),mainHit=document.getElementById('mainHit');
+  mainImg.setAttribute('href',FILES.cutout);
   var mbox={x:148,y:409,w:440,h:586};
   mainHit.addEventListener('click',function(){pick(mainImg,mbox)});
   mainHit.addEventListener('keydown',key(function(){pick(mainImg,mbox)}));
@@ -91,9 +103,9 @@ var PHOTOS={
     analyser=ac.createAnalyser();analyser.fftSize=256;data=new Uint8Array(analyser.frequencyBinCount);
     master.connect(analyser);analyser.connect(ac.destination);ac.resume();
     function plain(){ /* fallback: simple looping audio (no beat-reactive animation) */
-      fallback=new Audio('AUD-20261013-WA0007.mp3');fallback.loop=true;fallback.volume=muted?0:.9;fallback.play();
+      fallback=new Audio(FILES.music);fallback.loop=true;fallback.volume=muted?0:.9;fallback.play();
     }
-    fetch('AUD-20261013-WA0007.mp3').then(function(r){return r.arrayBuffer()}).then(function(ab){
+    fetch(FILES.music).then(function(r){return r.arrayBuffer()}).then(function(ab){
       ac.decodeAudioData(ab,function(buf){
         var src=ac.createBufferSource();src.buffer=buf;src.loop=true;src.connect(master);src.start();
         master.gain.linearRampToValueAtTime(muted?0:.9,ac.currentTime+2);
