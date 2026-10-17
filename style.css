@@ -78,4 +78,4 @@ button:focus-visible{outline:3px solid var(--rose);outline-offset:3px}
 #mute[hidden]{display:none}
 @media (prefers-reduced-motion:reduce){
   .dot,.cue,.hearts i{animation:none}.slice,.pop,.fade{transition-duration:.01s;transition-delay:0s}.js .rv{opacity:1;transform:none;transition:none}
-}
+        }
