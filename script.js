@@ -1,46 +1,11 @@
 /* Birthday card: photo ring, music-reactive animation, letter reveal.
    Photo placement data: src = file, nw/nh = pixel size, fx/fy = where the face sits (0-1), z = how much of the photo width shows. */
 var PHOTOS={
-  "p0": {
-    "src": "assets/photo-1-sofa.jpg",
-    "nw": 810,
-    "nh": 1080,
-    "fx": 0.484,
-    "fy": 0.556,
-    "z": 0.6
-  },
-  "p1": {
-    "src": "assets/photo-2-black-sweater.jpg",
-    "nw": 700,
-    "nh": 933,
-    "fx": 0.62,
-    "fy": 0.33,
-    "z": 0.45
-  },
-  "p2": {
-    "src": "assets/photo-3-white-shirt.jpg",
-    "nw": 700,
-    "nh": 933,
-    "fx": 0.59,
-    "fy": 0.58,
-    "z": 0.5
-  },
-  "p3": {
-    "src": "assets/photo-4-couple-mirror.jpg",
-    "nw": 900,
-    "nh": 1200,
-    "fx": 0.42,
-    "fy": 0.51,
-    "z": 0.55
-  },
-  "p4": {
-    "src": "assets/photo-5-boat.jpg",
-    "nw": 774,
-    "nh": 1032,
-    "fx": 0.36,
-    "fy": 0.5,
-    "z": 0.8
-  }
+  "p0": {"src": "1000042740.jpg", "nw": 810, "nh": 1080, "fx": 0.484, "fy": 0.556, "z": 0.6},
+  "p1": {"src": "1000042746.jpg", "nw": 700, "nh": 933, "fx": 0.62, "fy": 0.33, "z": 0.45},
+  "p2": {"src": "1000042751.jpg", "nw": 700, "nh": 933, "fx": 0.59, "fy": 0.58, "z": 0.5},
+  "p3": {"src": "1000042742.jpg", "nw": 900, "nh": 1200, "fx": 0.42, "fy": 0.51, "z": 0.55},
+  "p4": {"src": "1000042748.jpg", "nw": 774, "nh": 1032, "fx": 0.36, "fy": 0.5, "z": 0.8}
 };
 
 (function(){
@@ -126,9 +91,9 @@ var PHOTOS={
     analyser=ac.createAnalyser();analyser.fftSize=256;data=new Uint8Array(analyser.frequencyBinCount);
     master.connect(analyser);analyser.connect(ac.destination);ac.resume();
     function plain(){ /* fallback: simple looping audio (no beat-reactive animation) */
-      fallback=new Audio('assets/music.mp3');fallback.loop=true;fallback.volume=muted?0:.9;fallback.play();
+      fallback=new Audio('AUD-20261013-WA0007.mp3');fallback.loop=true;fallback.volume=muted?0:.9;fallback.play();
     }
-    fetch('assets/music.mp3').then(function(r){return r.arrayBuffer()}).then(function(ab){
+    fetch('AUD-20261013-WA0007.mp3').then(function(r){return r.arrayBuffer()}).then(function(ab){
       ac.decodeAudioData(ab,function(buf){
         var src=ac.createBufferSource();src.buffer=buf;src.loop=true;src.connect(master);src.start();
         master.gain.linearRampToValueAtTime(muted?0:.9,ac.currentTime+2);
@@ -154,4 +119,3 @@ var PHOTOS={
     mute.textContent=muted?'Unmute':'Mute';
   });
 })();
-               
